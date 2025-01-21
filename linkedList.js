@@ -126,6 +126,37 @@ class LinkedList {
       current = current.next;
     }
   }
+
+  reverseLinkedList() {
+    if (this.head === null) {
+      console.log("Empty Linked List");
+    }
+    let prev = null;
+    let current = this.head;
+
+    while (current !== null) {
+      let next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+  }
+
+  findMiddleOfLinkedList() {
+    if (this.head === null) {
+      console.log("Linked List Empty");
+      return;
+    }
+    let endPtr = this.head;
+    let midPtr = this.head;
+    while (endPtr !== null && endPtr.next !== null) {
+      endPtr = endPtr.next.next;
+      midPtr = midPtr.next;
+    }
+    console.log("The mid data is : ", midPtr.data);
+    return midPtr.data;
+  }
 }
 
 let linkedList = new LinkedList();
@@ -140,10 +171,10 @@ linkedList.addNodeAtAndIndex(3, 7);
 // linkedList.printAllNode();
 // linkedList.removeNodeFromBegining();
 // linkedList.printAllNode();
-// linkedList.removeNodeFromIndex(3);
+linkedList.removeNodeFromIndex(1);
 // linkedList.printAllNode();
 // linkedList.removeNodeFromEnd();
 // linkedList.printAllNode();
 // linkedList.updateNodeAtIndex(6, 9);
-// linkedList.printAllNode();
-console.log(linkedList.getSize());
+linkedList.printAllNode();
+// console.log(linkedList.getSize());
